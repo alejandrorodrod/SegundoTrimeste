@@ -11,7 +11,6 @@ public class Conjunto {
 
     public boolean insertar(int elemento) {
         boolean insertar = false;
-        Lista aux = new Lista();
 
         for  (int i = 0; i < this.lista.getElementosLista(); i++) {
             insertar = false;
@@ -21,7 +20,7 @@ public class Conjunto {
             }
         }
 
-        if (insertar == true) {
+        if (insertar) {
             this.lista.setElementoFinalLista(elemento);
         }
 
@@ -30,9 +29,40 @@ public class Conjunto {
 
     public boolean insertar(Conjunto conjunto) {
         boolean insertar = false;
-        Lista aux = new Lista();
+        Lista aux = conjunto.lista;
 
-        aux = this.lista;
-        this.lista.
+        for  (int i = 0; i < this.lista.getElementosLista(); i++) {
+
+            for (int j = 0; j < this.lista.getElementosLista(); j++) {
+                insertar = false;
+                if (aux.getElementoLista(i) != this.lista.getElementoLista(j)) {
+                    insertar = true;
+                    break;
+                }
+            }
+        }
+
+        if (insertar) {
+            this.lista.setAniadirLista(aux);
+        }
+
+        return insertar;
+    }
+
+    public boolean eliminarElemento(int elemento) {
+        boolean eliminar = false;
+        int posicion = this.lista.getElementoEncontrar(elemento);
+        Lista aux;
+
+        if (posicion != -1) {
+            eliminar = true;
+            for (;posicion < this.lista.getElementosLista() - 1; posicion++) {
+                this.lista.setElementoMitadLista(this.lista.getElementoLista(posicion + 1) ,posicion);
+            }
+        }
+
+        //for para reducir el número del conjunto
+
+        return eliminar;
     }
 }
