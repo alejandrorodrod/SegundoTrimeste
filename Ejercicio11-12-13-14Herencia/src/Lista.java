@@ -40,11 +40,17 @@ public class Lista {
     public void setElementoMitadLista(int numero, int posicion) {
         int[] aux = new int[this.lista.length + 1];
 
-        for (int i = 1; i < aux.length; i++) {
-            if (i != posicion) {
-                aux[i] = this.lista[i - 1];
+
+        if (posicion < this.lista.length && posicion >= 0) {
+            for (int i = 1; i < aux.length; i++) {
+                if (i < posicion) {
+                    aux[i] = this.lista[i];
+                } else  if (i > posicion) {
+                    aux[i + 1] = this.lista[i];
+                }
             }
         }
+
         aux[posicion] = numero;
         this.lista = aux;
     }
@@ -81,7 +87,8 @@ public class Lista {
 
     //Ejercicio 12, método estático
     public static Lista listaConcatenada (Lista lista1, Lista lista2) {
-        Lista aux = lista1;
+        Lista aux = new Lista();
+        aux.setAniadirLista(lista1);
         aux.setAniadirLista(lista2);
         return aux;
     }
@@ -89,17 +96,31 @@ public class Lista {
     //Ejercicio 13
     @Override
     public boolean equals(Object obj) {
-        boolean igual = false;
+        boolean igual = true;
         Lista lista2 = (Lista) obj;
-        
-        for (int i = 0; i < this.lista.length; i++) {
-            igual = false;
-            
-            if (this.lista[i] ==  lista2.lista[i]) {
-                igual = true;
+
+        if (lista2.getElementosLista() == this.getElementosLista()) {
+            for (int i = 0; i < this.lista.length; i++) {
+
+                if (this.lista[i] != lista2.lista[i]) {
+                    igual = false;
+                    break;
+                }
             }
+        } else {
+            igual = false;
         }
         
         return igual;
+    }
+
+    public void eliminarUltimoElemento() {
+        int[] aux = new int[this.lista.length - 1];
+
+        for (int i = 0; i < aux.length; i++) {
+            aux[i] = this.lista[i];
+        }
+
+        this.lista = aux;
     }
 }
