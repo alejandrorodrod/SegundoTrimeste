@@ -32,12 +32,12 @@ public class Dados {
                 String dado = "D6 ";
                 int numero = rand.nextInt(7);
 
-                ImageIcon icono = new ImageIcon(getClass().getResource("/D12_" + numero +".png"));
+                ImageIcon icono = new ImageIcon(getClass().getResource("/D6_" + numero +".png"));
                 cara.setIcon(icono);
 
                 resultado = anadirTirada(dado, numero);
 
-                resultados.setText(Arrays.toString(resultado));
+                resultados.setText(imprimir());
             }
         });
 
@@ -88,6 +88,23 @@ public class Dados {
         }
         aux[aux.length - 1] = dado + Integer.toString(numero);
         return aux;
+    }
+
+    public String imprimir() {
+        String res = "";
+        int contador = 0;
+
+        for(int i = 0; i < resultado.length; i++) {
+            if (contador < 5) {
+                res += resultado[i] + " ";
+                contador++;
+            } else {
+                res += ("\n" + resultado[i]);
+                contador = 1;
+            }
+        }
+
+        return res;
     }
 
     public static void main(String[] args) {
