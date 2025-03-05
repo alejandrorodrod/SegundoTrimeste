@@ -3,7 +3,9 @@ public class Conjunto {
     private Lista lista;
 
     //Se crean los constructores
-    public Conjunto() {}
+    public Conjunto() {
+        lista = new Lista();
+    }
 
     public int numeroElementos() {
         return this.lista.getElementosLista();
@@ -22,7 +24,7 @@ public class Conjunto {
 
         for(int i = 0; i < conjunto.lista.getElementosLista(); i++) {
 
-            if (lista.getElementoEncontrar(conjunto.lista.getElementoLista(i))==-1){
+            if (this.lista.getElementoEncontrar(conjunto.lista.getElementoLista(i))==-1){
                 this.insertar(conjunto.lista.getElementoLista(i));
             }
         }
