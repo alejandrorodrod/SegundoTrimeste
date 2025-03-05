@@ -12,6 +12,7 @@ public class Conjunto extends Lista {
         boolean insertar = false;
         if (this.getElementoEncontrar(elemento) == -1) {
             this.setElementoFinalLista(elemento);
+            insertar = true;
         }
         return insertar;
     }
