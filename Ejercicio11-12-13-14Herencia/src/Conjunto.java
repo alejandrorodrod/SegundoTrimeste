@@ -79,8 +79,21 @@ public class Conjunto {
 
     @Override
     public boolean equals(Object obj) {
+        boolean equal = true;
         Conjunto aux = (Conjunto) obj;
-        return this.lista.equals(aux.lista);
+
+        if (this.lista.getElementosLista() == aux.lista.getElementosLista()) {
+            for (int i = 0; i < this.lista.getElementosLista(); i++) {
+                if (!this.pertenece(aux.lista.getElementoLista(i))) {
+                    equal = false;
+                    break;
+                }
+            }
+        } else {
+            equal = false;
+        }
+
+        return equal;
     }
 
     public static boolean incluido(Conjunto c1, Conjunto c2) {
