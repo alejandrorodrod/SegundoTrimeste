@@ -22,7 +22,7 @@ public class Conjunto {
     public boolean insertar(Conjunto conjunto) {
         boolean insertar = false;
 
-        for(int i = 0; i < conjunto.lista.getElementosLista(); i++) {
+        for(int i = 0; i < conjunto.numeroElementos(); i++) {
 
             if (this.lista.getElementoEncontrar(conjunto.lista.getElementoLista(i))==-1){
                 this.insertar(conjunto.lista.getElementoLista(i));
@@ -39,7 +39,7 @@ public class Conjunto {
         if (posicion != -1) {
             eliminar = true;
 
-            for (;posicion < this.lista.getElementosLista() - 1; posicion++) {
+            for (;posicion < this.numeroElementos() - 1; posicion++) {
                 this.lista.setElementoMitadLista(this.lista.getElementoLista(posicion + 1) ,posicion);
             }
         }
@@ -54,7 +54,7 @@ public class Conjunto {
     public boolean eliminarConjunto(Conjunto conjunto) {
         boolean eliminar = false;
 
-        for (int i = 0; i < this.lista.getElementosLista(); i++) {
+        for (int i = 0; i < this.numeroElementos(); i++) {
             this.eliminarElemento(conjunto.lista.getElementoLista(i));
         }
 
@@ -82,8 +82,8 @@ public class Conjunto {
         boolean equal = true;
         Conjunto aux = (Conjunto) obj;
 
-        if (this.lista.getElementosLista() == aux.lista.getElementosLista()) {
-            for (int i = 0; i < this.lista.getElementosLista(); i++) {
+        if (this.numeroElementos() == aux.numeroElementos()) {
+            for (int i = 0; i < this.numeroElementos(); i++) {
                 if (!this.pertenece(aux.lista.getElementoLista(i))) {
                     equal = false;
                     break;
@@ -99,7 +99,7 @@ public class Conjunto {
     public static boolean incluido(Conjunto c1, Conjunto c2) {
         boolean incluido = true;
 
-        for (int i = 0; i < c1.lista.getElementosLista(); i++) {
+        for (int i = 0; i < c1.numeroElementos(); i++) {
 
             if (!c2.pertenece(c1.lista.getElementoLista(i))) {
                 incluido = false;
@@ -120,8 +120,8 @@ public class Conjunto {
     public static Conjunto interseccion(Conjunto c1, Conjunto c2) {
         Conjunto interseccion = new Conjunto();
 
-        for  (int i = 0; i < c2.lista.getElementosLista(); i++) {
-            if (c1.pertenece(c2.lista.getElementoLista(i))) {
+        for  (int i = 0; i < c2.numeroElementos(); i++) {
+            if (c2.pertenece(c1.lista.getElementoLista(i))) {
                 interseccion.insertar(c2.lista.getElementoLista(i));
             }
         }
@@ -132,7 +132,7 @@ public class Conjunto {
     public static Conjunto diferencia(Conjunto c1, Conjunto c2) {
         Conjunto diferente = new Conjunto();
 
-        for  (int i = 0; i < c1.lista.getElementosLista(); i++) {
+        for  (int i = 0; i < c1.numeroElementos(); i++) {
             if (!c2.pertenece(c1.lista.getElementoLista(i))) {
                 diferente.insertar(c1.lista.getElementoLista(i));
             }
