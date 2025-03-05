@@ -24,6 +24,7 @@ public class Conjunto extends Lista {
 
             if (this.getElementoEncontrar(conjunto.getElementoLista(i)) == -1) {
                 this.insertar(conjunto.getElementoLista(i));
+                insertar = true;
             }
         }
 
@@ -54,6 +55,7 @@ public class Conjunto extends Lista {
 
         for (int i = 0; i < this.numeroElementos(); i++) {
             this.eliminarElemento(conjunto.getElementoLista(i));
+            eliminar = true;
         }
 
         return eliminar;
