@@ -15,6 +15,7 @@ public class Conjunto {
         boolean insertar = false;
         if (lista.getElementoEncontrar(elemento)==-1){
             lista.setElementoFinalLista(elemento);
+            insertar = true;
         }
         return insertar;
     }
@@ -26,6 +27,7 @@ public class Conjunto {
 
             if (this.lista.getElementoEncontrar(conjunto.lista.getElementoLista(i))==-1){
                 this.insertar(conjunto.lista.getElementoLista(i));
+                insertar = true;
             }
         }
 
@@ -56,6 +58,7 @@ public class Conjunto {
 
         for (int i = 0; i < this.numeroElementos(); i++) {
             this.eliminarElemento(conjunto.lista.getElementoLista(i));
+            eliminar = true;
         }
 
         return eliminar;
